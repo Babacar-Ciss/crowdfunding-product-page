@@ -1,18 +1,26 @@
 import PledgeComponent from "../PledgeComponent/PledgeComponent";
 import "./PledgeModal.scss";
 import { GlobalContext } from "../../App";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
+import gsap from "gsap";
 
 
 const PledgeModal = () => {
     
     const {setShowPledgeModalHandler,numberLeftBambooStand,numberLeftBlackEdition,numberLeftMahogany, set} = useContext(GlobalContext);
-  
+    
+    const pledgeModalRef = useRef()
+
+
+    useEffect (() => {
+        gsap.fromTo(pledgeModalRef.current, {y: "100vh"}, {y : "-35vh",  duration : 1} )
+    }, [])
+
 
     return (
-        <div className="PledgeModal">
+        <div className="PledgeModal" >
             <div className="PledgeModal__container">
-                <div className="modal" >
+                <div className="modal" ref={pledgeModalRef} >
                     <div className="modal__wrapper">
                         <h2>Back this project</h2>
                         <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world? </p>   
@@ -24,8 +32,7 @@ const PledgeModal = () => {
                                      numberLeft={null}
                                      title = "Pledge with no reward"
                                      details = "Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email."/>
-                    {/* {console.log(numberLeftBambooStand)}
-                     */}
+
                     <PledgeComponent defaultPledge ={25}
                                      numberLeft={numberLeftBambooStand}
                                      title = "Bamboo Stand"

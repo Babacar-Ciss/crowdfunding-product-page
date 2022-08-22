@@ -19,8 +19,6 @@ const PledgeStyle = styled.div`
     margin-bottom: 24px;
     border: 1px solid rgba(0, 0, 0, 0.15);
 
-
-
     &::after {
         z-index: 2;
         background-color: #FFF;
@@ -37,7 +35,6 @@ const PledgeStyle = styled.div`
 
 const Pledge = ({title, amount, text, numberLeft}) => {
 
-        const pledgeRef = useRef()
         const revealsRefs = useRef([])
         revealsRefs.current = [];
 
@@ -49,7 +46,6 @@ const Pledge = ({title, amount, text, numberLeft}) => {
         }
 
         useEffect(() => {
-            
             revealsRefs.current.forEach((el, index) => {
                 gsap.fromTo(el, 
                     {autoAlpha : 0}, 
@@ -63,19 +59,14 @@ const Pledge = ({title, amount, text, numberLeft}) => {
                         toggleActions : "play none none none",
                         markers : false,
                     }})
-            })
-            
-            
+            })    
         }, [])
-
-
 
         const addToRefs = (el) => {
             if(el && !revealsRefs.current.includes(el)) {
                 revealsRefs.current.push(el)
             }
         }
-
 
     return (
        <>

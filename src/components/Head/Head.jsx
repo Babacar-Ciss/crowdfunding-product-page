@@ -2,9 +2,16 @@ import "./Head.scss"
 import { GlobalContext } from "../../App";
 import { useContext, useRef, useEffect, useState } from "react";
 import gsap from "gsap";
+import CSSRulePlugin from "gsap/CSSRulePlugin";
+// import { TweenMax } from "gsap/all";
+
+
+gsap.registerPlugin(CSSRulePlugin);
+
+
 
 const Head = () => {
-    
+    const rule = CSSRulePlugin.getRule(".Head:before");
     const  [ isBookmarked, setIsBookmarked] = useState(true);
 
     const {setShowPledgeModalHandler} = useContext(GlobalContext);
@@ -14,8 +21,26 @@ const Head = () => {
     useEffect (() => {
         gsap.fromTo(headRef.current, 
             {opacity : 0, translateX : '-50vh'}, {opacity : 1 , x : 0, duration : 1});
+    
+        gsap.to(rule, 0.4, {
+            cssRule : {
+                scale : 1.3
+            },
+            // scale: 1.02,
+            repeat: -1,
+            yoyo: true,
+            ease: "Power0.easeNone",
+            delay : 1,
+        })
+    
     },[] )
     
+
+
+
+
+
+
     return(
         <div ref={headRef} className="Head">
             <h1 className="Head__tag"> Mastercraft Bamboo Monitor Riser </h1>

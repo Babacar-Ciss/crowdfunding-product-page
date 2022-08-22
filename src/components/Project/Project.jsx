@@ -12,57 +12,28 @@ const Project = () => {
  
     const projectRef = useRef();
 
-
-    // useEffect (() => {
-    //     gsap.fromTo(projectRef.current,{ opacity : 0.5},
-    //                                    { opacity : 1 }),
-            
-    //         {  
-    //             scrollTrigger : {
-    //             trigger: "#Project",
-    //             markers: true,
-    //             start: "top bottom"
-    //             }
-    //         }
-            
-    //       }
-            
-            
-            
-            // )
-    
-
-
-
-
-    // useEffect (() => {
-    //     gsap.from(projectRef.current, {opacity : 0.2});
-    //     gsap.to(projectRef.current, {opacity : 1, duration : 0.5, delay : 2, scale : 1.03})
-    //     gsap.to(projectRef.current, {opacity : 1, duration : 0.5, delay : 3, scale : 1})
-    // })
-
-    // const intersection = useIntersection(projectRef, {
-    //     root : null,
-    //     rootMargin : '0px',
-    //     threshold : 0.5
-    // })
-
-    // console.log(intersection);
-    // const fadeIn = el => {
-    //     gsap.to(el, 1, {
-    //         opacity: 1,
-    //         ease : "power4.out",
-    //     });
-    // }
-
-    // const fadeOut = el => {
-    //     gsap.to(el, 1, {
-    //         opacity: 0,
-    //         ease : "power4.out",
-    //     });
-    // }
-
-    // intersection && intersection.intersectionRatio < 0.5 ? fadeOut(".Project") : fadeIn(".Project")
+    useEffect (() => {
+        gsap.fromTo(projectRef.current, 
+                    {opacity : 1},
+                    {
+                        opacity : 1,
+                        scale:1.02,
+                        repeat:1,
+                        yoyo: true,
+                        ease: "none",
+                        delay : 1,
+                      });
+        
+        // gsap.to(projectRef.current, 
+        //     {
+        //     opacity : 1,
+        //     scale:1.02,
+        //     repeat:1,
+        //     yoyo: true,
+        //     ease: "Power.easeNone",
+        //     delay : 1,
+        //   });
+    }, [])
 
     return (
         <div className="Project" id="Project" ref={projectRef}>

@@ -2,6 +2,7 @@ import "./PledgeComponent.scss";
 import { GlobalContext } from "../../App";
 import { useState, useContext, useRef, useEffect } from "react";
 import styled from "styled-components";
+import gsap from "gsap";
 
 
 const PledgeComponentStyle = styled.div`
@@ -36,9 +37,13 @@ const PledgeComponentStyle = styled.div`
 
 const PledgeComponent = ({title, details, defaultPledge , numberLeft}) => {
    
-    const ref = useRef();
+    const submitRef = useRef(null)
+    const ref = useRef([]);
+    ref.current = [];
 
-   
+
+
+   const tab = []
     
     const {setShowThankYouModalHandler,addPledgeHandler, 
                     pledgeValue,subtractNumberLeftHandler,selectedTitlePledge,setSelectedTitlePledge} = useContext(GlobalContext);
@@ -51,7 +56,7 @@ const PledgeComponent = ({title, details, defaultPledge , numberLeft}) => {
 
     // Functions Handlers
     const clickHandler = () => {
-        setChecked(!checked)
+        // addToRefs();
         setChecked(!checked)
     }
 
@@ -59,20 +64,43 @@ const PledgeComponent = ({title, details, defaultPledge , numberLeft}) => {
         setChecked(true)
     }
     
-    return (
+    const addToRefs = (el) => {
+        if(el && !ref.current.includes(el)) {
+            ref.current.push(el)
+        }
+    }
 
+    useEffect(() => {
+        ref.current.forEach((el, index) => {
+            gsap.fromTo(el, 
+                {autoAlpha : 0}, 
+                {duration : 1, 
+                autoAlpha : 1, 
+                delay : 0.5,
+                ease : "none",
+            })
+        })    
+    }, [])
+
+    useEffect(() => {
+      gsap.fromTo(submitRef.current, {y : -20},{y : 0, duration : 0.5})        
+    }, [checked])
+
+
+    
+    return (
         <>
             {
                 (numberLeft > 0 || numberLeft === null) 
                 ? 
                 (
-                    <div    
+                    <div    ref={addToRefs}
                             className="PledgeComponent" 
                             style={(checked || selectedTitlePledge === title) ? {border : "2px solid #3CB3AB" } : null}>
                    
                    <div className="PledgeComponent__form">
                        <input type="radio"
-                            //   name="radio"
+                              name="radio"
                               id="radio"
                               onChange={onChangeHandler}
                               checked={checked || selectedTitlePledge === title}
@@ -82,7 +110,11 @@ const PledgeComponent = ({title, details, defaultPledge , numberLeft}) => {
                    </div>
        
                    <div className="PledgeComponent__box"
-                        onClick={clickHandler}>
+                        onClick={ () => {
+                            addToRefs();
+                            clickHandler();
+                        }}>
+
                        <h3 className="PledgeComponent__box--title">{title}</h3>
        
                        <h4  className={`PledgeComponent__box--value`}> 
@@ -95,7 +127,7 @@ const PledgeComponent = ({title, details, defaultPledge , numberLeft}) => {
 
                        {
                            (checked || selectedTitlePledge === title) ? (
-                               <div className="PledgeComponent__submitting">
+                               <div className="PledgeComponent__submitting" ref={submitRef}>
                                <p>Enter your pledge</p>
                                <div>
                                    <input type="number"
