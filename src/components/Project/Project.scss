@@ -1,0 +1,38 @@
+.Project { 
+    padding-top: 48px;
+    background-color: #FFF;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.0497193);
+
+    @media (min-width: 375px) and (max-width: 1440px) {
+        padding-top : 40px;
+    }
+
+    &__container {
+        width: 87.5%;
+        margin-inline: auto;
+
+        @media (min-width: 375px) and (max-width: 1440px) {
+            width: 85%;
+        }
+    
+
+        h2:first-child {
+            text-align: left;
+            margin-bottom: 35px;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                margin-bottom: 24px;
+            }
+        }
+
+        p {
+            color: #7A7A7A;   
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 30px;
+            text-align: left;
+        }
+    }
+}

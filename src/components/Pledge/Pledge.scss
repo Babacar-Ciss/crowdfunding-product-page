@@ -1,0 +1,118 @@
+.Pledge {
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+    margin-inline: auto;
+    padding-top: 48px;
+    padding-bottom: 32px;
+    background-color: #FFF;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    
+    @media (min-width: 375px) and (max-width: 1440px) {
+        padding-top: 24px; 
+        padding-bottom: 24px;
+    }
+    
+    &__container {
+        width: 90%;
+        margin-inline: auto;
+        display: flex;
+        flex-wrap: wrap;
+
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #000;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                flex-basis: 100%;
+                text-align: left;
+            }
+        }
+
+        h4 {
+            color: #3CB3AB;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 18px;
+            text-align: right;
+            margin-left: auto;
+
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                margin-top: 8px;
+                margin-left: 0;
+            }
+        }
+
+        p {
+            flex-basis: 100%;
+            margin-top: 24px;
+            margin-bottom: 24px;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                font-size: 14px;
+            }
+        }
+
+        & > h2 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 39px;         
+            color: #000000;
+            margin-bottom: 0;
+            display: flex;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                flex-basis: 100%;
+            }
+            
+        
+            span {
+                color: #7A7A7A;
+                padding-top: 10px;
+                font-size: 15px;
+                font-weight: 400;
+                line-height: 18px;
+                display: block;
+                margin-left: 8px;
+            }
+        }
+
+        button {
+            margin-left: auto;
+            font-family: "Commissioner";
+            width: 157px;
+            height: 48px;
+            border-radius: 33.5px;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 17px;
+            background-color: #3CB3AB;
+            color: #FFF;
+            cursor: pointer;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                // flex-basis: 100%;
+                margin-left: 0;
+                margin-top: 24px ;
+            }
+        
+            &:hover {
+                background-color: #147A73;
+                transition: all 0.2s;
+            }
+        }
+    }
+}
+
+#out-of-stock {
+    background-color: #2F2F2F ;
+    opacity: 0.5;
+    mix-blend-mode: normal;
+    cursor: not-allowed;
+}

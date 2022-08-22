@@ -1,0 +1,11 @@
+.Main {
+    max-width: 49.5%;
+    margin-top: -92px;
+    margin-inline: auto;
+    padding-bottom: 48px ;
+
+    @media (min-width: 375px) and (max-width: 1440px) {
+        max-width: 87%;    
+        margin-top: -56px;
+    }
+}

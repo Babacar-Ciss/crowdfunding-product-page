@@ -1,0 +1,77 @@
+.Header {
+    // Background Color Styling on the Header Section
+    height: 400px;
+    background-image: url(../../assets/images/image-hero-desktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 45px;
+
+    @media (min-width: 375px) and (max-width: 1440px) {
+        height: 300px;
+        background-image: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.0001) 100%), url(../../assets/images/image-hero-mobile.jpg);
+        background-size: contain; 
+        padding-top: 32px;
+    }
+
+
+    &__container {
+        max-width: 82.6%;
+        margin-inline: auto;
+        display: flex;
+        justify-content: space-between;
+
+        @media (min-width: 375px) and (max-width: 1440px) {
+            max-width: 87.2%;    
+        }
+
+        img {
+            z-index: 1000;
+
+        }
+
+
+       &--navigation {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        display: flex;
+        align-items: center;     
+
+        @media (min-width : 375px) and (max-width : 1440px)  {
+            display: none;
+        }
+        
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            
+            a:link,
+            a:visited {
+                text-decoration: none;
+                color: #FFFFFF;      
+            }
+
+            li:hover {
+                cursor: pointer;
+                border-bottom: 1px solid #FFFFFF;
+                transition: all .2s;
+            }
+
+            li:not(:last-child) {
+                margin-right: 32px;
+            }
+        }
+      } 
+        
+        &--hamburger-nav {
+            display: none;
+            z-index: 1000;
+            @media (min-width: 375px) and (max-width: 1440px) {
+                display: block;  
+                cursor: pointer;  
+            }
+        
+        }
+    }
+}

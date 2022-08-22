@@ -1,0 +1,337 @@
+.PledgeComponent {
+
+    display: flex;
+    justify-content: stretch;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-inline: auto;
+    padding-top: 33px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+
+    @media (min-width: 375px) and (max-width: 1440px) {
+        width: 85.5%;
+        padding-top: 23px;
+    }
+
+    &:hover span.checkmark {
+         border: 1px solid #3CB3AB;
+         transition: all 0.2s;
+    }
+
+
+    &__form {
+        display: block;
+        flex-basis: content;
+        height: 10px;
+        position: relative;
+        padding-left: 35px;
+        margin-left: 28px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        @media (min-width: 375px) and (max-width: 1440px) {
+            flex-basis: 83%; 
+            margin-top: 15px;
+          } 
+
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 45px;
+            width: 34px;
+            top: -9px;
+            left: -5px;
+            z-index: 2;
+
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            // border: 1px solid #3CB3AB;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 50%;   
+        }
+    
+
+        input:checked ~ .checkmark {
+            background-color: #FFF;
+        }
+
+        .checkmark::after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+         input:checked ~ .checkmark:after {
+            display: block;
+          }
+
+         .checkmark:after {
+            top: 52.5%;
+            left: 49%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3CB3AB;
+            transform: translate(-50%,-50%);          
+          }
+    }
+
+    &__box {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 84%;
+        margin-right: 28px;
+        margin-left: auto;
+
+        @media (min-width: 375px) and (max-width: 1440px) {
+          flex-basis: 83%; 
+          margin-right: 24px;
+          margin-top: -23px;
+        }
+
+        &--title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            text-align: left;
+            margin-bottom: 17px;
+            margin-right: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                margin-bottom: 8px;
+                margin-left: 47px;
+                font-size: 14px;
+            }
+
+            &:hover {
+                color: #3CB3AB;
+            }
+        }
+
+        &--value {
+            color: #3CB3AB;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            text-align: right;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                margin-bottom: 24px;
+                margin-left: 47px;
+                font-weight: 700;
+                font-size: 14px;
+            }
+           
+        }
+
+        &--left-backers {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 39px;         
+            color: #000000;
+            padding-bottom: 0px;
+            display: flex;
+            margin-top: -10px;
+            margin-left: auto;
+            
+            @media (min-width: 375px) and (max-width: 1440px) {
+                order: 4;
+                margin-left: 0;
+                margin-bottom: 24px;
+            }
+        
+           &__left {
+                color: #7A7A7A;
+                padding-top: 12px;
+                font-size: 15px;
+                font-weight: 400;
+                line-height: 18px;
+                display: block;
+                margin-left: 8px;
+            }
+        }
+
+
+        &--details {
+            color: #7A7A7A;
+            flex-basis: 100%;
+            font-size: 15px;
+            line-height: 28px;
+            font-weight: 400;
+            text-align: left;
+            margin-bottom: 32px;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+               font-size: 14px;
+            }
+      
+        }
+    }
+
+    &__submitting {
+        flex-basis: 100%;
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+        padding-top: 24px ;
+        padding-bottom: 24px ;
+        display: flex;
+        align-items: center;
+
+        @media (min-width: 375px) and (max-width: 1440px) {
+            flex-wrap: wrap;
+         }
+
+        p {
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 28px;
+            color: #7A7A7A;
+            margin-left: 28px;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                flex-basis: 100%;
+                margin-left: 0;
+                margin-bottom: 16px;
+            }
+        }
+
+        div {
+            margin-right: -36.8%;
+            margin-left: auto;
+            position: relative;
+
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                margin-right: 0;
+                margin-left: auto;
+            }
+
+
+            &::before {
+                z-index: 2;
+                color: rgba(0, 0, 0, 0.25);
+                content: "$";
+                font-family: 'Commissioner';
+                font-weight: 700;
+                font-size: 14px;
+                position : absolute;
+                top: 16px;
+                left: 17px;
+            }
+        }
+    
+        &--button {
+            font-family: "Commissioner";
+            width: 107px;
+            height: 48px;
+            margin-right: 28px;
+            margin-left: auto;
+            border-radius: 33.5px;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 17px;
+            background-color: #3CB3AB;
+            color: #FFF;
+            cursor: pointer;
+            transition: all 0.2s ;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+                margin-left: auto;
+                margin-right: 24px;
+            }
+
+            &:hover {
+                background-color: #147A73;
+            }
+        }
+
+        &--input {
+            -moz-appearance: textfield;
+            position: relative;
+            width: 100px;
+            height: 48px;
+            border-radius: 33.5px;
+            font-family: "Commissioner";
+            border: 1px solid #3CB3AB ;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;;
+            color: #000000;
+            text-align: right;
+            padding-right: 40px ;
+            caret-color:  #3CB3AB ;
+
+            @media (min-width: 375px) and (max-width: 1440px) {
+
+            }
+
+            &::placeholder {
+                font-family: 'Commissioner';
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;;
+                color: #000000;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &::after {
+                content: " ";
+                display: block;
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 2px;
+                left: 2px;
+            }
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+        }
+    }
+}
+
+.animation-wrong-value-pledge {
+     animation: shake 1s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+}
+
